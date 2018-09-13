@@ -77,7 +77,36 @@ function promptPurchaseFunc() {
             }
         ])
         .then(answers => {
-            // Use user feedback for... whatever!!
+            connection.query("SELECT * FROM products WHERE item_id = ?", answers.item_purchase,
+                function (err, res) {
+                    if (err) throw err;
+
+                    for (var i = 0; i < res.length; i++) {
+                        if (answers.quantity_purchase > res[i].stock_quantity) {
+                            console.log("\nInsufficient quantity! Please choose a lower quantity of units or check back at a later time.\n");
+                            start();
+                        }
+                        else {
+                            console.log(answers.quantity_purchase + " units of '" + res[i].product_name + "' have been purchased.");
+                            connection.query(
+                                "UPDATE products SET ? WHERE ?",
+                                [
+                                    {
+                                        stock_quantity: (res[i].stock_quantity - answers.quantity_purchase)
+                                    },
+                                    {
+                                        item_id: answers.item_purchase
+                                    }
+                                ],
+                                function (err, res) {
+                                    //console.log(res.affectedRows + " products updated!\n");
+                                    start();
+                                }
+                            );
+                        }
+                    }
+                })
+
         });
 }
 
@@ -92,11 +121,6 @@ function welcomeFunc() {
         ])
         .then(answers => {
             // Try to use switches instead later on...
-            // switch (answers.welcome) {
-            //     case true:
-            //     return "YOU DID IT"
-            // }
-
             if (answers.welcome === true) {
                 start();
             }
@@ -106,9 +130,4 @@ function welcomeFunc() {
             }
         });
 
-
-
-    function purchaseFunc() {
-
-    }
 }
