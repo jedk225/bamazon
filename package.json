@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/jedk225/bamazon#readme",
   "dependencies": {
+    "cli-table": "^0.3.1",
+    "dotenv": "^6.0.0",
     "inquirer": "^6.2.0",
+    "mysql": "^2.16.0",
     "npm": "^6.4.1"
   }
 }
