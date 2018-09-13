@@ -28,8 +28,8 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     // run the start function after the connection is made to prompt the user
-    console.log("\nConnected to Bamazon\n")
-    start();
+    console.log("\n...Connected to Bamazon\n")
+    welcomeFunc();
 });
 
 function start() {
@@ -55,13 +55,60 @@ function start() {
                 table.push(
                     [itemId, product, department, "$" + price, stock]
                 );
-
             }
             console.log(table.toString());
-
+            promptPurchaseFunc();
         })
 
 }
 
+function promptPurchaseFunc() {
+    inquirer
+        .prompt([
+            {
+                name: "item_purchase",
+                type: "input",
+                message: "What is the Product ID of the item you would like to buy?"
+            },
+            {
+                name: "quantity_purchase",
+                type: "input",
+                message: "How many would you like to purchase?"
+            }
+        ])
+        .then(answers => {
+            // Use user feedback for... whatever!!
+        });
+}
+
+function welcomeFunc() {
+    inquirer
+        .prompt([
+            {
+                name: "welcome",
+                type: "confirm",
+                message: "Welcome to Bamazon! Would you like to browse our wares?"
+            }
+        ])
+        .then(answers => {
+            // Try to use switches instead later on...
+            // switch (answers.welcome) {
+            //     case true:
+            //     return "YOU DID IT"
+            // }
+
+            if (answers.welcome === true) {
+                start();
+            }
+            else {
+                console.log("Have a wonderful day! Please come back any time.");
+                connection.end();
+            }
+        });
 
 
+
+    function purchaseFunc() {
+
+    }
+}
