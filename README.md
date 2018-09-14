@@ -4,6 +4,14 @@
 Bamazon is an Amazon-like storefront utilizing Node.js & MySQL
 ```
 
+# Dependencies
+```
+1. mysql
+2. cli-table
+3. inquirer
+
+Please install each of the packages listed above by typing 'npm install [Package Name]' in the command line.
+```
 # Demo (images)
 ## 1. Welcome Prompt
 Prompt when the CLI is run
@@ -26,3 +34,6 @@ The MySQL database is updated and displayed. The quantity that the customer is p
 
 ## Demo Video Link(YouTube)
 https://youtu.be/RG5vKhDJw_o
+
+## Contributers
+* Jed Kim
