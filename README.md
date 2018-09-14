@@ -1,9 +1,15 @@
-# bamazon
+# Bamazon
 
-```
 Bamazon is an Amazon-like storefront utilizing Node.js & MySQL
 
-The app will take in orders from customers and deplete stock from the store's inventory. The inventory is being stored on a database named 'bamazon' on local server using MySQL
+The app will take in orders from customers and deplete stock from the store's inventory. The inventory is being stored on a database named 'bamazon' on a local server using MySQL. The purpose of this project is to experience how to program a command-line interface (CLI) to READ and UPDATE values that exist on a database that was created using MySQL Workbench.
+
+
+# Technologies
+```
+1. MySQL
+2. Node.js
+3. NPM
 ```
 
 # Dependencies
