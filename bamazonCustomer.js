@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
     // Username
     user: "root",
 
-    // Password
+    // Password is in a .env file to prevent from pushing to GitHub
     password: mypassword,
     database: "bamazon"
 });
@@ -32,6 +32,7 @@ connection.connect(function (err) {
     welcomeFunc();
 });
 
+// Function to display available items
 function start() {
     connection.query("SELECT * FROM products",
         function (err, res) {
@@ -62,18 +63,31 @@ function start() {
 
 }
 
+//Function to prompt the customer to select and item via item number and quantity
 function promptPurchaseFunc() {
     inquirer
         .prompt([
             {
                 name: "item_purchase",
                 type: "input",
-                message: "What is the Product ID of the item you would like to buy?"
+                message: "What is the Product ID of the item you would like to buy? [Ctrl+C to quit]",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
             },
             {
                 name: "quantity_purchase",
                 type: "input",
-                message: "How many would you like to purchase?"
+                message: "How many would you like to purchase? [Ctrl+C to quit]",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
             }
         ])
         .then(answers => {
@@ -99,7 +113,6 @@ function promptPurchaseFunc() {
                                     }
                                 ],
                                 function (err, res) {
-                                    //console.log(res.affectedRows + " products updated!\n");
                                     start();
                                 }
                             );
@@ -110,6 +123,7 @@ function promptPurchaseFunc() {
         });
 }
 
+// Function to greet the customer
 function welcomeFunc() {
     inquirer
         .prompt([
