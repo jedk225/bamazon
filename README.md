@@ -39,6 +39,12 @@ User is prompted to choose item they wish to purchase via the item id number. Th
 ## 4. Updated Database
 The MySQL database is updated and displayed. The quantity that the customer is purchasing is subtracted from the previous stock quantity. User is also given and confirmation of the item quantity and total price.
 ![Intro Image](images/4-UpdatedStock.png?raw=true)
+---
+
+## NOTE: Validation for stock quantity
+If a user requests to purchase more units than is currently in stock, they will be informed that there is insufficient quantity. They will then be prompted to make another selection.
+![Intro Image](images/5-InsufficientQuantity.png?raw=true)
+---
 
 ## Demo Video Link(YouTube)
 https://youtu.be/RG5vKhDJw_o
