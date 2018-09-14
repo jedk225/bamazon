@@ -5,5 +5,5 @@ An Amazon-like storefront utilizing Node.js &amp; MySQL
 ```
 
 
-![Intro Immage](../images/1-Intro.png?)
+![Intro Image](images/1-Intro.png?raw=true "Title")
 
