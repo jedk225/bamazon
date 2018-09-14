@@ -101,7 +101,8 @@ function promptPurchaseFunc() {
                             start();
                         }
                         else {
-                            console.log(answers.quantity_purchase + " units of '" + res[i].product_name + "' have been purchased.");
+                            console.log("\n" + answers.quantity_purchase + " units of '" + res[i].product_name + "' have been purchased.");
+                            console.log("Total Price: $" + (res[i].price * answers.quantity_purchase) + "\n")
                             connection.query(
                                 "UPDATE products SET ? WHERE ?",
                                 [
